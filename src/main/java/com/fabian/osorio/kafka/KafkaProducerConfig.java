@@ -1,6 +1,7 @@
 package com.fabian.osorio.kafka;
 
 import com.fabian.osorio.PersonDTO;
+import com.fabian.osorio.kafka.messages.MessagesKafka;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ public class KafkaProducerConfig {
     private String bootstrapAddress;
 
     @Bean
-    public ProducerFactory<String, PersonDTO> producerFactory() {
+    public ProducerFactory<String, MessagesKafka> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +32,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, PersonDTO> kafkaTemplate(){
+    public KafkaTemplate<String, MessagesKafka> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
 }

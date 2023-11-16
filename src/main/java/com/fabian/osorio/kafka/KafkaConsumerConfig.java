@@ -1,6 +1,7 @@
 package com.fabian.osorio.kafka;
 
 import com.fabian.osorio.PersonDTO;
+import com.fabian.osorio.kafka.messages.MessagesKafka;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -24,7 +25,7 @@ public class KafkaConsumerConfig {
     private String bootstrapAddress;
 
     @Bean
-    public ConsumerFactory<String, PersonDTO> consumerFactory(){
+    public ConsumerFactory<String, MessagesKafka> consumerFactory(){
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "my_group_id");
@@ -33,13 +34,13 @@ public class KafkaConsumerConfig {
         return new DefaultKafkaConsumerFactory<>(
                 props,
                 new StringDeserializer(),
-                new JsonDeserializer<>(PersonDTO.class)
+                new JsonDeserializer<>(MessagesKafka.class)
         );
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, PersonDTO> kafkaListenerContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, PersonDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, MessagesKafka> kafkaListenerContainerFactory(){
+        ConcurrentKafkaListenerContainerFactory<String, MessagesKafka> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
