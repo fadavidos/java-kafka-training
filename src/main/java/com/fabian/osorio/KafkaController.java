@@ -15,6 +15,9 @@ public class KafkaController {
 
     @PostMapping("/publish")
     public void publishMessage(@RequestBody String message){
-        kafkaTemplate.send("my_test", message);
+        kafkaTemplate.send(
+                TopicNames.TOPIC_FIRST_TOPIC,
+                message
+        );
     }
 }

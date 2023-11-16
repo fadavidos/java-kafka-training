@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaAdmin;
-
+import com.fabian.osorio.TopicNames;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +25,11 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topic1(){
-        return new NewTopic("my_test", 1, (short) 1);
+        return new NewTopic(
+                TopicNames.TOPIC_FIRST_TOPIC,
+                1,
+                (short) 1
+        );
     }
 
 
