@@ -1,4 +1,4 @@
-package com.fabian.osorio;
+package com.fabian.osorio.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

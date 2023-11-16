@@ -1,4 +1,4 @@
-package com.fabian.osorio;
+package com.fabian.osorio.kafka;
 
 public class TopicNames {
 
