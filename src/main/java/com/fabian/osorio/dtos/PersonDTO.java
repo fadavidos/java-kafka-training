@@ -1,4 +1,4 @@
-package com.fabian.osorio;
+package com.fabian.osorio.dtos;
 public record PersonDTO(String id, String name, String age){
     @Override
     public String toString() {

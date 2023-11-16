@@ -1,8 +1,10 @@
 package com.fabian.osorio.services;
 
 
-import com.fabian.osorio.PersonDTO;
+import com.fabian.osorio.dtos.CarDTO;
+import com.fabian.osorio.dtos.PersonDTO;
 import com.fabian.osorio.kafka.TopicNames;
+import com.fabian.osorio.kafka.messages.CarMessage;
 import com.fabian.osorio.kafka.messages.MessagesKafka;
 import com.fabian.osorio.kafka.messages.PersonMessage;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,6 +24,12 @@ public class ProducerKafkaService {
         kafkaTemplate.send(
                 TopicNames.TOPIC_FIRST_TOPIC,
                 new PersonMessage(message.id(), message.name(), message.age())
+        );
+    }
+    public void sendMessage(CarDTO message){
+        kafkaTemplate.send(
+                TopicNames.TOPIC_FIRST_TOPIC,
+                new CarMessage(message.id(), message.brand(), message.model())
         );
     }
 }

@@ -23,11 +23,21 @@ Run the Spring Boot Application as usual.
 There is an endpoint `/publish` who publish messages to kafka.
 
 ```
-curl --location 'localhost:8080/publish' \
+curl --location 'localhost:8080/publish/person' \
 --header 'Content-Type: application/json' \
 --data '{
     "id": "123",
     "name": "John",
     "age": 3
+}'
+```
+
+```
+curl --location 'localhost:8080/publish/car' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": "342",
+    "brand": "Toyota",
+    "model": "2024"
 }'
 ```

@@ -1,8 +1,6 @@
 package com.fabian.osorio.kafka;
 
-import com.fabian.osorio.PersonDTO;
 import com.fabian.osorio.kafka.messages.MessagesKafka;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

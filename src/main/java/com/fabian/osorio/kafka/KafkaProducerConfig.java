@@ -1,6 +1,5 @@
 package com.fabian.osorio.kafka;
 
-import com.fabian.osorio.PersonDTO;
 import com.fabian.osorio.kafka.messages.MessagesKafka;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
