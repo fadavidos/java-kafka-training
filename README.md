@@ -25,5 +25,9 @@ There is an endpoint `/publish` who publish messages to kafka.
 ```
 curl --location 'localhost:8080/publish' \
 --header 'Content-Type: application/json' \
---data 'hello world'
+--data '{
+    "id": "123",
+    "name": "John",
+    "age": 3
+}'
 ```
